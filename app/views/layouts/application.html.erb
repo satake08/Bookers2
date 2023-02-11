@@ -21,10 +21,10 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-              
+
               <% if user_signed_in? %>
-                <li><%= link_to books_path,class: 'nav-link text-light' do %>
-                  
+                <li><%= link_to user_path(current_user),class: 'nav-link text-light' do %>
+
                   <i class="fas fa-home"></i> Home
                 <% end %>
                 </li>

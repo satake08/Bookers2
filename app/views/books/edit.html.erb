@@ -6,6 +6,14 @@
     <div class="row">
       <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
         <h1>Editing Book</h1>
+        <% if @book.errors.any? %>
+          <%= @book.errors.count %> error prohibited this obj from being saved:
+          <ul>
+            <% @book.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
         <%= form_with model: @book do |f| %>
           <div class="form-group">
             <label for="book_title">Title</label>
@@ -13,16 +21,14 @@
           </div>
           <div class="form-group">
             <label for="book_opinion">Opinion</label>
-            <%= f.text_area :Opinion, class: "form-control book_body"%>
+            <%= f.text_area :body, class: "form-control book_body"%>
           </div>
           <div class="form-group">
             <%= f.submit 'Update Book', class:"btn btn-success" %>
           </div>
         <% end %>
-        <td class="show-link"><%= link_to "Show", book_path(book.id) %></td> |
-        <td class="Back-link"><%= link_to "Back", root_path(book.id) %></td>
-        <a class="book_60832" href="/books/60832">Show</a> |
-        <a class="back" href="/books">Back</a>
+        <td class="show-link"><%= link_to "Show", book_path(@book.id) %></td> |
+        <td class="Back-link"><%= link_to "Back", books_path %></td>
       </div>
     </div>
   </div>
